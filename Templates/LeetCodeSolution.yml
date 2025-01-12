@@ -1,0 +1,26 @@
+name: LeetCode Solution Template
+description: A template for generating a LeeCode solution
+variables:
+  solution_name:
+    description: The name of the solution
+    required: true
+files:
+  - path: Sources/Solution.swift
+    contents: |
+      /// - Time complexity: O(<#Complexity#>)
+      /// - Space complexity: O(<#Complexity#>)
+      class Solution {
+          func {{ solution_name|lowerFirstLetter }}(<#Parameters#>) -> <#Result Type#> {
+              <#Implementation#>
+          }
+      }
+  - path: Tests/Tests.swift
+    contents: |
+      import Testing
+      @testable import {{ solution_name }}
+      
+      @Test func test1() async throws {
+      }
+      
+      @Test func test2() async throws {
+      }
