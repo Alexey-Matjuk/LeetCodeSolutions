@@ -6,6 +6,7 @@ import PackageDescription
 
 /// Auto-generated list of solutions
 let solutions = [
+    "MissingNumber",
 ]
 
 let package = Package(
