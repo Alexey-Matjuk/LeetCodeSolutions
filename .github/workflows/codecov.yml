@@ -1,0 +1,31 @@
+name: Code Coverage
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  upload_code_coverage:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run tests
+        run: |
+          swift test --enable-code-coverage --package-path LeetCodeSolutions
+
+      - name: Swift Coverage Conversion
+        uses: sersoft-gmbh/swift-coverage-action@v4.0
+        with:
+            search-paths: "LeetCodeSolutions/.build"
+            output: "LeetCodeSolutions/.build/debug"
+
+      - name: Upload code coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: "LeetCodeSolutions/.build/debug/codecov.json"
+          flags: swift
+          slug: Alexey-Matjuk/LeetCodeSolutions
