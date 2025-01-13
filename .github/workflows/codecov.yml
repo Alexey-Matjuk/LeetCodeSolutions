@@ -12,10 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Swift
-        uses: fwal/setup-swift@v1
+      - name: Install Swift
+        uses: tayloraswift/swift-install-action@master
         with:
-          swift-version: '6.0'
+          swift-prefix: swift-6.0.2-release/ubuntu2204/swift-6.0.2-RELEASE
+          swift-id: swift-6.0.2-RELEASE-ubuntu22.04
+      
+      - name: Check Swift
+        run: swift --version
 
       - name: Run tests
         run: |
