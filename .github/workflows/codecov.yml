@@ -6,17 +6,11 @@ on:
 
 jobs:
   upload_code_coverage:
-    runs-on: macos-latest
+    runs-on: macos-15
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Install Swift
-        uses: tayloraswift/swift-install-action@master
-        with:
-          swift-prefix: "swift-6.0-release/xcode/swift-6.0-RELEASE"
-          swift-id: "swift-6.0-RELEASE"
 
       - name: Check Swift
         run: swift --version
