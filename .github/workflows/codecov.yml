@@ -15,9 +15,9 @@ jobs:
       - name: Install Swift
         uses: tayloraswift/swift-install-action@master
         with:
-          swift-prefix: swift-6.0.2-release/ubuntu2204/swift-6.0.2-RELEASE
-          swift-id: swift-6.0.2-RELEASE-ubuntu22.04
-      
+          swift-prefix: "swift-6.0-release/xcode/swift-6.0-RELEASE"
+          swift-id: "swift-6.0-RELEASE"
+
       - name: Check Swift
         run: swift --version
 
