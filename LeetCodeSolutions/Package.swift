@@ -8,6 +8,7 @@ import PackageDescription
 let solutions = [
     "FirstBadVersion",
     "MissingNumber",
+    "MoveZeroes",
 ]
 
 let package = Package(
