@@ -9,6 +9,7 @@ let solutions = [
     "FirstBadVersion",
     "MissingNumber",
     "MoveZeroes",
+    "Search",
 ]
 
 let package = Package(
