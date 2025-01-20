@@ -7,6 +7,7 @@ import PackageDescription
 /// Auto-generated list of solutions
 let solutions = [
     "FirstBadVersion",
+    "MinCost",
     "MissingNumber",
     "MoveZeroes",
     "Search",
