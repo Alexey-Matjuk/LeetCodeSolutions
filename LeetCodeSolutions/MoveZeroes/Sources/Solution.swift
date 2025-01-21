@@ -3,15 +3,12 @@
 /// - Space complexity: O(1)
 class Solution {
     func moveZeroes(_ nums: inout [Int]) {
-        var zeros = 0
-        nums.removeAll {
-            if $0 == 0 {
-                zeros += 1
-                return true
-            } else {
-                return false
+        var lastNonZero: Int = 0
+        for index in nums.indices {
+            if 0 != nums[index] {
+                nums.swapAt(lastNonZero, index)
+                lastNonZero += 1
             }
         }
-        nums.append(contentsOf: Array(repeating: 0, count: zeros))
     }
 }
