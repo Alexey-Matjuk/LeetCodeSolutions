@@ -8,6 +8,7 @@ import PackageDescription
 let solutions = [
     "FirstBadVersion",
     "FirstCompleteIndex",
+    "GridGame",
     "MinCost",
     "MissingNumber",
     "MoveZeroes",
