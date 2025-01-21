@@ -66,13 +66,3 @@ private struct CellsIterator: IteratorProtocol {
         )
     }
 }
-
-private struct CellValue<T: Hashable>: Hashable {
-    let value: T
-    let rowIndex: Int
-    let columnIndex: Int
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(value)
-    }
-}
