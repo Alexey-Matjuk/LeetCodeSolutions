@@ -14,6 +14,7 @@ let solutions = [
     "MinCost",
     "MissingNumber",
     "MoveZeroes",
+    "RowAndMaximumOnes",
     "Search",
 ]
 
