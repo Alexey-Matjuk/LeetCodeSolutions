@@ -9,6 +9,7 @@ let solutions = [
     "FirstBadVersion",
     "FirstCompleteIndex",
     "GridGame",
+    "HighestPeak",
     "MinCost",
     "MissingNumber",
     "MoveZeroes",
