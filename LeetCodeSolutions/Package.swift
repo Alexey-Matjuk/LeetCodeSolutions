@@ -10,6 +10,7 @@ let solutions = [
     "FirstCompleteIndex",
     "GridGame",
     "HighestPeak",
+    "MaxProduct",
     "MinCost",
     "MissingNumber",
     "MoveZeroes",
