@@ -16,6 +16,7 @@ let solutions = [
     "MoveZeroes",
     "RowAndMaximumOnes",
     "Search",
+    "СountServers",
 ]
 
 let package = Package(
