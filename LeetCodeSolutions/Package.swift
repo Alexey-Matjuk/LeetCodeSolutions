@@ -6,6 +6,7 @@ import PackageDescription
 
 /// Auto-generated list of solutions
 let solutions = [
+    "EventualSafeNodes",
     "FirstBadVersion",
     "FirstCompleteIndex",
     "GridGame",
