@@ -11,6 +11,7 @@ let solutions = [
     "FirstCompleteIndex",
     "GridGame",
     "HighestPeak",
+    "LexicographicallySmallestArray",
     "MaxProduct",
     "MinCost",
     "MissingNumber",
