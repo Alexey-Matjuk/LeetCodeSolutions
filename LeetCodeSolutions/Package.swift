@@ -13,6 +13,7 @@ let solutions = [
     "HighestPeak",
     "LexicographicallySmallestArray",
     "MaxProduct",
+    "MaximumInvitations",
     "MinCost",
     "MissingNumber",
     "MoveZeroes",
