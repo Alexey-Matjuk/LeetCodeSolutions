@@ -8,6 +8,7 @@ import PackageDescription
 let solutions = [
     "CheckIfPrerequisite",
     "EventualSafeNodes",
+    "FindMaxFish",
     "FirstBadVersion",
     "FirstCompleteIndex",
     "GridGame",
