@@ -10,7 +10,7 @@ struct GenerateSolutionCommand: ParsableCommand {
         abstract: "A command to generate a new LeetCode solution subpackage."
     )
 
-    @Argument(help: "The name of the solution to generate.")
+    @Argument(help: "The name of the solution to generate.", transform: \.uppercasedFirstLetter)
     var solutionName: String
 
     @Flag(name: .shortAndLong, help: "Override the solution if it already exists.")
@@ -63,5 +63,11 @@ private extension GenerateSolutionCommand {
             with: "let solutions = [\n\(solutions.map { "    \"\($0)\",\n" }.joined())]"
         )
         try packageFileContent.write(to: packageFilePath.url, atomically: true, encoding: .utf8)
+    }
+}
+
+private extension String {
+    var uppercasedFirstLetter: String {
+        first.flatMap { $0.uppercased() + dropFirst() } ?? self
     }
 }
