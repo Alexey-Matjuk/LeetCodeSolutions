@@ -1,5 +1,5 @@
-/// - Time complexity: O(<#Complexity#>)
-/// - Space complexity: O(<#Complexity#>)
+/// - Time complexity: O(n * m)
+/// - Space complexity: O(n * m)
 class Solution {
     func largestIsland(_ grid: [[Int]]) -> Int {
         var idsGrid = Array(repeating: [Int](repeating: 0, count: grid[0].count), count: grid.count)
