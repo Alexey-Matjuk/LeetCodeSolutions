@@ -13,6 +13,7 @@ let solutions = [
     "FirstCompleteIndex",
     "GridGame",
     "HighestPeak",
+    "IsArraySpecial",
     "LargestIsland",
     "LexicographicallySmallestArray",
     "MaxProduct",
