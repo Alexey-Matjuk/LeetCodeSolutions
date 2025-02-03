@@ -17,6 +17,7 @@ let solutions = [
     "IsArraySpecial",
     "LargestIsland",
     "LexicographicallySmallestArray",
+    "LongestMonotonicSubarray",
     "MaxProduct",
     "MaxScore",
     "MaximumInvitations",
