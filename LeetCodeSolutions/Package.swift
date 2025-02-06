@@ -27,6 +27,7 @@ let solutions = [
     "MoveZeroes",
     "RowAndMaximumOnes",
     "Search",
+    "TupleSameProduct",
     "СountServers",
 ]
 
