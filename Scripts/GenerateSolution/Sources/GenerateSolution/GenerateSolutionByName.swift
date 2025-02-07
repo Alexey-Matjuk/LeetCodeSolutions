@@ -16,6 +16,7 @@ struct GenerateSolutionByName: AsyncParsableCommand {
 
     @Flag(name: .shortAndLong, help: "Override the solution if it already exists.")
     var override = false
+    var solutionSnippet: String?
 
     func run() async throws {
         print("Generating \(solutionName) subpackage...")
@@ -41,7 +42,9 @@ private extension GenerateSolutionByName {
             try outputPath.delete()
         }
 
-        let template = try GenesisTemplate(path: .current + "Templates/LeetCodeSolution.yml")
+        var template = try GenesisTemplate(path: .current + "Templates/LeetCodeSolution.yml")
+        solutionSnippet.flatMap { template.replaceSolutionWithSnippet ($0) }
+
         try TemplateGenerator(template: template)
             .generate(context: ["solution_name": solutionName], interactive: false)
             .writeFiles(path: outputPath)
@@ -60,6 +63,28 @@ private extension GenerateSolutionByName {
             with: "let solutions = [\n\(solutions.map { "    \"\($0)\",\n" }.joined())]"
         )
         try packageFileContent.write(to: packageFilePath.url, atomically: true, encoding: .utf8)
+    }
+}
+
+private extension GenesisTemplate {
+    mutating
+    func replaceSolutionWithSnippet(_ snippet: String) {
+        guard let solutionFileIndex = section.files.firstIndex(where: {
+            $0.path.hasSuffix("Solution.swift")
+        }) else { return }
+        let file = section.files[solutionFileIndex]
+        switch file.type {
+        case .contents(var contents):
+            guard let snippetIndex = contents.ranges(of: "class Solution").first?.lowerBound
+            else { break }
+
+            contents.replaceSubrange(
+                snippetIndex..<contents.endIndex,
+                with: snippet
+            )
+            section.files[solutionFileIndex].type = .contents(contents)
+        default: break
+        }
     }
 }
 

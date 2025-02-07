@@ -20,7 +20,8 @@ struct GenerateDailySolution: AsyncParsableCommand {
             [solutionName]
             + (override ? ["-o"] : [])
         )
-        if var asyncCommand = command as? AsyncParsableCommand {
+        if var asyncCommand = command as? GenerateSolutionByName {
+            asyncCommand.solutionSnippet = codeSnippet
             try await asyncCommand.run()
         } else {
             try command.run()
