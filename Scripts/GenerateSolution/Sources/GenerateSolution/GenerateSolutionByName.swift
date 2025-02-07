@@ -17,6 +17,7 @@ struct GenerateSolutionByName: AsyncParsableCommand {
     @Flag(name: .shortAndLong, help: "Override the solution if it already exists.")
     var override = false
     var solutionSnippet: String?
+    var testCasesString: String?
 
     func run() async throws {
         print("Generating \(solutionName) subpackage...")
@@ -38,12 +39,13 @@ private extension GenerateSolutionByName {
             guard override else {
                 throw ValidationError("Solution already exists at \(outputPath.string). Use --override to replace it.")
             }
-            print("Solution already exists at \(outputPath.string). Overriding...".yellow)
+            print("Solution already exists at \(outputPath.string).\nOverriding...".yellow)
             try outputPath.delete()
         }
 
         var template = try GenesisTemplate(path: .current + "Templates/LeetCodeSolution.yml")
-        solutionSnippet.flatMap { template.replaceSolutionWithSnippet ($0) }
+        solutionSnippet.flatMap { template.replaceSolutionWithSnippet($0) }
+        testCasesString.flatMap { template.replaceTestCases(with: $0) }
 
         try TemplateGenerator(template: template)
             .generate(context: ["solution_name": solutionName], interactive: false)
@@ -66,25 +68,61 @@ private extension GenerateSolutionByName {
     }
 }
 
-private extension GenesisTemplate {
+private extension File {
     mutating
-    func replaceSolutionWithSnippet(_ snippet: String) {
-        guard let solutionFileIndex = section.files.firstIndex(where: {
-            $0.path.hasSuffix("Solution.swift")
-        }) else { return }
-        let file = section.files[solutionFileIndex]
-        switch file.type {
-        case .contents(var contents):
-            guard let snippetIndex = contents.ranges(of: "class Solution").first?.lowerBound
-            else { break }
-
-            contents.replaceSubrange(
-                snippetIndex..<contents.endIndex,
-                with: snippet
-            )
-            section.files[solutionFileIndex].type = .contents(contents)
+    func transformContent(_ transform: (String) -> String) {
+        switch type {
+        case .contents(let contents):
+            type = .contents(transform(contents))
         default: break
         }
+    }
+}
+
+private extension GenesisTemplate {
+    mutating
+    func transformContentOfFile(_ fileName: String, transform: (String) -> String) {
+        guard let fileIndex = section.files.firstIndex(where: {
+            $0.path.hasSuffix(fileName)
+        }) else { return }
+        section.files[fileIndex].transformContent(transform)
+    }
+
+    mutating
+    func replaceContentOfFile(
+        _ fileName: String,
+        after searchString: String,
+        with newContent: String
+    ) {
+        transformContentOfFile(fileName) { content in
+            content
+                .ranges(of: searchString).first
+                .flatMap {
+                    content.replacingCharacters(
+                        in: $0.lowerBound..<content.endIndex,
+                        with: newContent
+                    )
+                }
+            ?? content
+        }
+    }
+
+    mutating
+    func replaceSolutionWithSnippet(_ snippet: String) {
+        replaceContentOfFile(
+            "Solution.swift",
+            after: "class Solution",
+            with: snippet
+        )
+    }
+
+    mutating
+    func replaceTestCases(with testCasesString: String) {
+        replaceContentOfFile(
+            "Tests.swift",
+            after: "@Test",
+            with: testCasesString
+        )
     }
 }
 
