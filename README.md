@@ -12,4 +12,21 @@
 </picture>
 
 > [!NOTE]
-> Some (18) solutions are not added to this repo, because it was created later. I might add them some day 😉
+> Some solutions are not added to this repo. But I might add them some day 😉
+
+## CLI Tools Examples
+
+### Install or Rebuild CLI
+```bash
+sh generate-soultion.sh -b
+```
+
+### Generate New Solution
+```bash
+sh generate-soultion.sh newSolution
+```
+
+### Generate Daily Solution
+```bash
+sh generate-soultion.sh daily
+```
