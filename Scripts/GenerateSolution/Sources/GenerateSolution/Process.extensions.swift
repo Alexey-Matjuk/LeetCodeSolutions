@@ -6,6 +6,10 @@ extension Process {
         try await openWithArguments(["-a", "Xcode", file.absolute().string])
     }
 
+    static func open(_ url: URL) async throws {
+        try await openWithArguments([url.absoluteString, "-n"])
+    }
+
     static func openWithArguments(_ arguments: [String]) async throws {
         let process = Process()
         process.launchPath = "/usr/bin/open"

@@ -1,4 +1,5 @@
 import ArgumentParser
+import Foundation
 import LeetCodeAPI
 import Rainbow
 
@@ -26,6 +27,15 @@ struct GenerateDailySolution: AsyncParsableCommand {
         } else {
             try command.run()
         }
+        try await open(dailyProblem)
+    }
+}
+
+private extension GenerateDailySolution {
+    func open(_ problem: DailyProblem) async throws {
+        guard let problemURL = URL(string: "https://leetcode.com\(problem.link)")
+        else { return }
+        try await Process.open(problemURL)
     }
 }
 
