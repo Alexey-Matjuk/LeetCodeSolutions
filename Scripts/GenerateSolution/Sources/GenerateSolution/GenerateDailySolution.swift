@@ -56,7 +56,7 @@ private extension Question {
                 }
                 """
             }
-            .joined(separator: "\n\n")
+            .joined(separator: "\n\n") + "\n"
     }
 }
 
