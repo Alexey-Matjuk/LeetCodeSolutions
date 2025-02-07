@@ -29,13 +29,8 @@ fi
 if [[ ! -f "$BINARY_PATH" ]]; then
     echo "OVERVIEW: A command to generate a new LeetCode solution subpackage."
     echo ""
-    echo "USAGE: generate-solution <solution-name> [--override] [--build-script]"
-    echo ""
-    echo "ARGUMENTS:"
-    echo "  <solution-name>         The name of the solution to generate."
-    echo ""
+    echo "INSTALL: generate-solution -b"
     echo "OPTIONS:"
-    echo "  -o, --override          Override the solution if it already exists."
     echo "  -b, --build-script      Build script for generating LeetCode solution subpackages."
     echo "  -h, --help              Show help information."
 fi

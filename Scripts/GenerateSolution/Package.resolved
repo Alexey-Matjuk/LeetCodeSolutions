@@ -1,6 +1,24 @@
 {
-  "originHash" : "9ff8ae358c62b2349ebef2055b5c03074ffe87b93fc019fc4019802e35abf497",
+  "originHash" : "338bbbcbc73d25bcac8d0181598c70a3af1b10d1f8342931275959fdd37db9f9",
   "pins" : [
+    {
+      "identity" : "apollo-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apollographql/apollo-ios",
+      "state" : {
+        "revision" : "e98e9d3b398b6005149074d51b097e31aaa44f63",
+        "version" : "1.17.0"
+      }
+    },
+    {
+      "identity" : "apollo-ios-codegen",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apollographql/apollo-ios-codegen",
+      "state" : {
+        "revision" : "ec18790f9072d4eaa72021b4cfac8452c76ca1a6",
+        "version" : "1.17.0"
+      }
+    },
     {
       "identity" : "genesis",
       "kind" : "remoteSourceControl",
@@ -8,6 +26,15 @@
       "state" : {
         "revision" : "fe00b6c9ab984849bbee890e9936c2a9271cb899",
         "version" : "0.9.0"
+      }
+    },
+    {
+      "identity" : "inflectorkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mattt/InflectorKit",
+      "state" : {
+        "revision" : "d8cbcc04972690aaa5fc760a2b9ddb3e9f0decd7",
+        "version" : "1.0.0"
       }
     },
     {
@@ -65,6 +92,15 @@
       }
     },
     {
+      "identity" : "sqlite.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stephencelis/SQLite.swift.git",
+      "state" : {
+        "revision" : "a95fc6df17d108bd99210db5e8a9bac90fe984b8",
+        "version" : "0.15.3"
+      }
+    },
+    {
       "identity" : "stencil",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/stencilproject/Stencil.git",
@@ -89,6 +125,15 @@
       "state" : {
         "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
         "version" : "1.5.0"
+      }
+    },
+    {
+      "identity" : "swift-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-collections",
+      "state" : {
+        "revision" : "671108c96644956dddcd89dd59c203dcdb36cec7",
+        "version" : "1.1.4"
       }
     },
     {

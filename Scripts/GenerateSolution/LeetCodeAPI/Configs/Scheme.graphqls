@@ -1,0 +1,104 @@
+type Query {
+  activeDailyCodingChallengeQuestion: DailyProblem!
+}
+
+type DailyProblem {
+  date: String!
+  link: String!
+  question: Question!
+}
+
+type Question {
+  questionId: String!
+  questionFrontendId: String!
+  boundTopicId: String
+  title: String!
+  titleSlug: String!
+  content: String!
+  translatedTitle: String
+  translatedContent: String
+  isPaidOnly: Boolean!
+  difficulty: String!
+  likes: Int!
+  dislikes: Int!
+  isLiked: Boolean
+  similarQuestions: String!
+  exampleTestcases: String!
+  contributors: [Contributor!]!
+  topicTags: [TopicTag!]!
+  companyTagStats: String
+  codeSnippets: [CodeSnippet!]!
+  stats: String!
+  hints: [String!]!
+  solution: Solution!
+  status: String
+  sampleTestCase: String!
+  metaData: String!
+  judgerAvailable: Boolean!
+  judgeType: String!
+  mysqlSchemas: [String!]!
+  enableRunCode: Boolean!
+  enableTestMode: Boolean!
+  enableDebugger: Boolean!
+  envInfo: String!
+  libraryUrl: String
+  adminUrl: String
+  challengeQuestion: ChallengeQuestion!
+  note: String!
+}
+
+type Contributor {
+  username: String!
+  profileUrl: String!
+  avatarUrl: String!
+}
+
+type TopicTag {
+  name: String!
+  slug: String!
+  translatedName: String
+}
+
+type CodeSnippet {
+  lang: String!
+  langSlug: LangSlug!
+  code: String!
+}
+
+type Solution {
+  id: String!
+  canSeeDetail: Boolean!
+  paidOnly: Boolean!
+  hasVideoSolution: Boolean!
+  paidOnlyVideo: Boolean!
+}
+
+type ChallengeQuestion {
+  id: String!
+  date: String!
+  incompleteChallengeCount: Int!
+  streakCount: Int!
+  type: String!
+}
+
+enum LangSlug {
+  cpp
+  java
+  python
+  python3
+  c
+  csharp
+  javascript
+  typescript
+  php
+  swift
+  kotlin
+  dart
+  golang
+  ruby
+  scala
+  rust
+  racket
+  erlang
+  elixir
+}

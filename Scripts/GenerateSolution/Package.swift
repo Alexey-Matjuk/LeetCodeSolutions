@@ -15,13 +15,15 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/yonaskolb/Genesis",
-            .upToNextMajor(
-                from: "0.9.0"
-            )
+            .upToNextMajor(from: "0.9.0")
         ),
         .package(
             url: "https://github.com/apple/swift-argument-parser.git",
             .upToNextMajor(from: "1.5.0")
+        ),
+        .package(
+            url: "https://github.com/apollographql/apollo-ios-codegen",
+            .upToNextMajor(from: "1.17.0")
         ),
     ],
     targets: [
@@ -30,6 +32,7 @@ let package = Package(
             dependencies: [
                 .product(name: "GenesisKit", package: "Genesis"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "ApolloCodegenLib", package: "apollo-ios-codegen"),
             ]
         ),
     ]
