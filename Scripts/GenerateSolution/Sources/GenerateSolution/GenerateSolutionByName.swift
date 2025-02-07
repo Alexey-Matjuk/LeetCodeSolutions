@@ -17,7 +17,9 @@ struct GenerateSolutionByName: AsyncParsableCommand {
 
     @Flag(name: .shortAndLong, help: "Override the solution if it already exists.")
     var override = false
+
     var solutionSnippet: String?
+    var headerComment: String?
     var testCasesString: String?
 
     func run() async throws {
@@ -48,6 +50,7 @@ private extension GenerateSolutionByName {
 
         var template = try GenesisTemplate(path: .current + "Templates/LeetCodeSolution.yml")
         solutionSnippet.flatMap { template.replaceSolutionWithSnippet($0) }
+        headerComment.flatMap { template.addSolutionHeaderComment($0) }
         testCasesString.flatMap { template.replaceTestCases(with: $0) }
 
         try TemplateGenerator(template: template)
@@ -122,6 +125,12 @@ private extension GenesisTemplate {
         }
     }
 
+    mutating
+    func addSolutionHeaderComment(_ headerComment: String) {
+        transformContentOfFile("Solution.swift") {
+            headerComment + "\n" + $0
+        }
+    }
     mutating
     func replaceSolutionWithSnippet(_ snippet: String) {
         replaceContentOfFile(

@@ -38,7 +38,7 @@ private struct FetchingError: LocalizedError, Hashable {
 
 private extension DailyProblem {
     init(_ dailyProblem: Generated.DailyProblemQuery.Data.ActiveDailyCodingChallengeQuestion) {
-        self.link = dailyProblem.link
+        self.url = URL(string: "https://leetcode.com\(dailyProblem.link)")!
         let question = dailyProblem.question
         self.question = .init(
             id: question.questionFrontendId,

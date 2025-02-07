@@ -1,4 +1,6 @@
+import Foundation
+
 public struct DailyProblem: Sendable {
-    public let link: String
+    public let url: URL
     public let question: Question
 }

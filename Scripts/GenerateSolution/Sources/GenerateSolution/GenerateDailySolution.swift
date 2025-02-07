@@ -23,19 +23,21 @@ struct GenerateDailySolution: AsyncParsableCommand {
         if var asyncCommand = command as? GenerateSolutionByName {
             asyncCommand.solutionSnippet = dailyProblem.question.codeSnippet
             asyncCommand.testCasesString = dailyProblem.question.testCasesString
+            asyncCommand.headerComment = dailyProblem.headerComment
             try await asyncCommand.run()
         } else {
             try command.run()
         }
-        try await open(dailyProblem)
+        try await Process.open(dailyProblem.url)
     }
 }
 
-private extension GenerateDailySolution {
-    func open(_ problem: DailyProblem) async throws {
-        guard let problemURL = URL(string: "https://leetcode.com\(problem.link)")
-        else { return }
-        try await Process.open(problemURL)
+private extension DailyProblem {
+    var headerComment: String {
+        """
+        /// [\(question.id). \(question.title)](\(url.absoluteString))
+        ///
+        """
     }
 }
 
