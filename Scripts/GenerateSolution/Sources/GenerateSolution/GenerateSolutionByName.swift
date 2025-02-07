@@ -1,4 +1,5 @@
 import ArgumentParser
+import Foundation
 import GenesisKit
 @preconcurrency import PathKit
 import Rainbow
@@ -24,6 +25,8 @@ struct GenerateSolutionByName: AsyncParsableCommand {
 
         try generateSolution()
         try updatePackageFile()
+        try await openPackage()
+        try await openSolution()
 
         print("Generation complete!".green)
     }
@@ -65,6 +68,18 @@ private extension GenerateSolutionByName {
             with: "let solutions = [\n\(solutions.map { "    \"\($0)\",\n" }.joined())]"
         )
         try packageFileContent.write(to: packageFilePath.url, atomically: true, encoding: .utf8)
+    }
+
+    func openPackage() async throws {
+        try await Process.openInXcode(
+            GenerateSolutionByName.projectPath + "Package.swift"
+        )
+    }
+
+    func openSolution() async throws {
+        try await Process.openInXcode(
+            GenerateSolutionByName.projectPath + "\(solutionName)/Sources/Solution.swift"
+        )
     }
 }
 
@@ -131,4 +146,3 @@ private extension String {
         first.flatMap { $0.uppercased() + dropFirst() } ?? self
     }
 }
-
