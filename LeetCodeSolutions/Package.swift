@@ -25,6 +25,7 @@ let solutions = [
     "MinCost",
     "MissingNumber",
     "MoveZeroes",
+    "QueryResults",
     "RowAndMaximumOnes",
     "Search",
     "TupleSameProduct",
