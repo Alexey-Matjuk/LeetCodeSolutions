@@ -7,7 +7,7 @@ extension Process {
     }
 
     static func open(_ url: URL) async throws {
-        try await openWithArguments([url.absoluteString, "-n"])
+        try await openWithArguments([url.absoluteString])
     }
 
     static func openWithArguments(_ arguments: [String]) async throws {
