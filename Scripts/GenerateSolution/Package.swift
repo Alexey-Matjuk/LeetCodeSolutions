@@ -25,6 +25,7 @@ let package = Package(
             url: "https://github.com/apollographql/apollo-ios-codegen",
             .upToNextMajor(from: "1.17.0")
         ),
+        .package(path: "LeetCodeAPI")
     ],
     targets: [
         .executableTarget(
@@ -33,6 +34,7 @@ let package = Package(
                 .product(name: "GenesisKit", package: "Genesis"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 .product(name: "ApolloCodegenLib", package: "apollo-ios-codegen"),
+                "LeetCodeAPI",
             ]
         ),
     ]

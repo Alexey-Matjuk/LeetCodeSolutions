@@ -10,6 +10,7 @@ struct GenerateSolution: AsyncParsableCommand {
         subcommands: [
             GenerateSolutionByName.self,
             GenerateLeetCodeAPI.self,
+            GenerateDailySolution.self,
         ],
         defaultSubcommand: GenerateSolutionByName.self
     )
