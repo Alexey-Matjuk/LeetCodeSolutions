@@ -2,8 +2,30 @@ import Foundation
 @preconcurrency import PathKit
 
 extension Process {
+    static func resolveSPMDependencies(_ project: Path) async throws {
+        let process = Process()
+        process.currentDirectoryURL = project.url
+        process.launchPath = "/usr/bin/swift"
+        process.arguments = ["package", "resolve"]
+
+        let pipe = Pipe()
+        process.standardOutput = pipe
+        process.standardError = pipe
+
+        do {
+            try await process.run()
+        } catch {
+            let data = pipe.fileHandleForReading.readDataToEndOfFile()
+            let output = String(data: data, encoding: .utf8) ?? ""
+            print(output)
+        }
+    }
+
     static func openInXcode(_ file: Path) async throws {
-        try await openWithArguments(["-a", "Xcode", file.absolute().string])
+        let process = Process()
+        process.launchPath = "/usr/bin/xed"
+        process.arguments = ["\(file.absolute().string)"]
+        try await process.run()
     }
 
     static func open(_ url: URL) async throws {
@@ -28,11 +50,5 @@ extension Process {
                 continuation.resume(throwing: error)
             }
         }
-    }
-}
-
-private extension Task where Success == Never, Failure == Never {
-    static func sleep(seconds duration: TimeInterval) async throws {
-        try await sleep(nanoseconds: UInt64(duration * 1_000_000_000))
     }
 }

@@ -27,6 +27,7 @@ struct GenerateSolutionByName: AsyncParsableCommand {
 
         try generateSolution()
         try updatePackageFile()
+
         try await openPackage()
         try await openSolution()
 
@@ -74,6 +75,9 @@ private extension GenerateSolutionByName {
     }
 
     func openPackage() async throws {
+        try await Process.resolveSPMDependencies(
+            GenerateSolutionByName.projectPath
+        )
         try await Process.openInXcode(
             GenerateSolutionByName.projectPath + "Package.swift"
         )
