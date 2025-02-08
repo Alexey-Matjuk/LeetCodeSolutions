@@ -53,13 +53,17 @@ private extension Question {
 
         let expectedResults = content
             .removingHTMLTags()
-            .matches(of: /Output:\s(.+)/)
+            .matches(of: /Output:?\s(.+)/)
             .map(\.1)
 
         let parametersNumber = parameters.count { $0 == "," } + 1
-        return exampleTestcases
+        let exampleTestcases = exampleTestcases
             .split(separator: "\n")
             .chunked(into: parametersNumber)
+
+        guard expectedResults.count == exampleTestcases.count else { return nil }
+
+        return exampleTestcases
             .enumerated()
             .map {
                 """
