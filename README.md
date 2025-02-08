@@ -18,15 +18,15 @@
 
 ### Install or Rebuild CLI
 ```bash
-sh generate-soultion.sh -b
+sh generate-solution.sh -b
 ```
 
 ### Generate New Solution
 ```bash
-sh generate-soultion.sh newSolution
+sh generate-solution.sh newSolution
 ```
 
 ### Generate Daily Solution
 ```bash
-sh generate-soultion.sh daily
+sh generate-solution.sh daily
 ```
