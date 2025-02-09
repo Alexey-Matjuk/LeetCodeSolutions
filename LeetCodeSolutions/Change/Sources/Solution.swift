@@ -1,30 +1,23 @@
 /// [2349. Design a Number Container System](https://leetcode.com/problems/design-a-number-container-system/)
-///
-/// - Time complexity: O(<#Complexity#>)
-/// - Space complexity: O(<#Complexity#>)
 class NumberContainers {
     var indicesHeapByNumber = [Int:Heap<Int>]()
-    var indicesSetByNumber = [Int:Set<Int>]()
     var numberByIndex = [Int:Int]()
 
+    /// - Time complexity: O(log n)
+    /// - Space complexity: O(n)
     func change(_ index: Int, _ number: Int) {
-        if let existingNumber = numberByIndex[index], existingNumber != number {
-            indicesSetByNumber[existingNumber]?.remove(index)
-        }
         numberByIndex[index] = number
         indicesHeapByNumber[number, default: .init()].insert(index)
-        indicesSetByNumber[number, default: []].insert(index)
     }
 
+
+    /// - Time complexity: O(k * log n), where k is number of stale elements
+    /// - Space complexity: O(1)
     func find(_ number: Int) -> Int {
-        guard let validIndicesSet = indicesSetByNumber[number],
-              var indicesHeap = indicesHeapByNumber[number]
-        else { return -1 }
-
-        indicesHeap.popMin { !validIndicesSet.contains($0) }
-        indicesHeapByNumber[number] = indicesHeap
-
-        return indicesHeap.min ?? -1
+        indicesHeapByNumber[number]?.popMin {
+            numberByIndex[$0] != number
+        }
+        return indicesHeapByNumber[number]?.min ?? -1
     }
 }
 
