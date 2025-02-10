@@ -10,6 +10,7 @@ let solutions = [
     "Change",
     "Check",
     "CheckIfPrerequisite",
+    "ClearDigits",
     "CountBadPairs",
     "EventualSafeNodes",
     "FindMaxFish",
