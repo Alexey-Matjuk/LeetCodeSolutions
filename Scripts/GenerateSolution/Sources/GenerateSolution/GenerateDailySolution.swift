@@ -1,3 +1,4 @@
+import AppKit
 import ArgumentParser
 import Foundation
 import LeetCodeAPI
@@ -54,7 +55,7 @@ private extension Question {
         let expectedResults = content
             .removingHTMLTags()
             .matches(of: /Output:?\s(.+)/)
-            .map(\.1)
+            .map { String($0.1).removingHTMLencoding() }
 
         let parametersNumber = parameters.count { $0 == "," } + 1
         let exampleTestcases = exampleTestcases
@@ -87,5 +88,18 @@ private extension Collection where Index == Int {
 extension String {
     func removingHTMLTags() -> String {
         replacing(/<[^>]+>/, with: "")
+    }
+
+    func removingHTMLencoding() -> String {
+        (
+            try? NSAttributedString(
+                data: data(using: .utf8)!,
+                options: [
+                    .documentType: NSAttributedString.DocumentType.html.rawValue,
+                    .characterEncoding: Encoding.utf8.rawValue
+                ],
+                documentAttributes: nil
+            ).string
+        ) ?? self
     }
 }
