@@ -6,6 +6,9 @@
 ![Swift Version](https://img.shields.io/badge/Swift-6.0-blue?logo=swift&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/SPM-compatible-blue)
 
+![LeetCode](https://img.shields.io/badge/LeetCode-000000?style=for-the-badge&logo=LeetCode&logoColor=#d16c06)
+![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)
+
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="https://leetcode-badge-sage.vercel.app/badge/Alexey-Matjuk?theme=dark">
  <img alt="Shows an illustrated sun in light color mode and a moon with stars in dark color mode." src="https://leetcode-badge-sage.vercel.app/badge/Alexey-Matjuk?theme=light">
