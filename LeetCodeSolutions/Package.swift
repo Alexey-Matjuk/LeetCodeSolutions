@@ -29,6 +29,7 @@ let solutions = [
     "MissingNumber",
     "MoveZeroes",
     "QueryResults",
+    "RemoveOccurrences",
     "RowAndMaximumOnes",
     "Search",
     "TupleSameProduct",
