@@ -25,6 +25,7 @@ let solutions = [
     "MaxProduct",
     "MaxScore",
     "MaximumInvitations",
+    "MaximumSum",
     "MinCost",
     "MissingNumber",
     "MoveZeroes",
