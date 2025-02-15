@@ -6,7 +6,6 @@ import PackageDescription
 
 /// Auto-generated list of solutions
 let solutions = [
-    "ProductOfNumbers",
     "AreAlmostEqual",
     "Change",
     "Check",
@@ -31,6 +30,8 @@ let solutions = [
     "MinOperations",
     "MissingNumber",
     "MoveZeroes",
+    "ProductOfNumbers",
+    "PunishmentNumber",
     "QueryResults",
     "RemoveOccurrences",
     "RowAndMaximumOnes",
