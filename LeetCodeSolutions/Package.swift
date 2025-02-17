@@ -11,6 +11,7 @@ let solutions = [
     "Check",
     "CheckIfPrerequisite",
     "ClearDigits",
+    "ConstructDistancedSequence",
     "CountBadPairs",
     "EventualSafeNodes",
     "FindMaxFish",
