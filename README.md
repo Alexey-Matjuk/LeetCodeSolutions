@@ -33,3 +33,9 @@ sh generate-solution.sh newSolution
 ```bash
 sh generate-solution.sh daily
 ```
+
+### Generate Selected Solution by its slug or link
+```bash
+sh generate-solution.sh selected squares-of-a-sorted-array
+sh generate-solution.sh selected https://leetcode.com/problems/squares-of-a-sorted-array/description
+```
