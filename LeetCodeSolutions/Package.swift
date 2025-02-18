@@ -22,6 +22,7 @@ let solutions = [
     "IsArraySpecial",
     "LargestIsland",
     "LexicographicallySmallestArray",
+    "LongestCommonSubsequence",
     "LongestMonotonicSubarray",
     "MaxProduct",
     "MaxScore",
