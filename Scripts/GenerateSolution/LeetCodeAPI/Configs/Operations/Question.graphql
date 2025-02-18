@@ -1,0 +1,21 @@
+query Question($titleSlug: String!) {
+    question(titleSlug: $titleSlug) {
+            questionFrontendId
+            title
+            titleSlug
+            content
+            difficulty
+            exampleTestcases
+            topicTags {
+                name
+                slug
+                translatedName
+            }
+            codeSnippets {
+                lang
+                langSlug
+                code
+            }
+            metaData
+    }
+}

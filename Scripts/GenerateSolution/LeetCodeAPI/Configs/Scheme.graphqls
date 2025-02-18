@@ -1,5 +1,6 @@
 type Query {
   activeDailyCodingChallengeQuestion: DailyProblem!
+  question(titleSlug: String!): Question
 }
 
 type DailyProblem {
