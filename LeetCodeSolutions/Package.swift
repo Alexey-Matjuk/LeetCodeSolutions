@@ -39,6 +39,7 @@ let solutions = [
     "RowAndMaximumOnes",
     "Search",
     "SmallestNumber",
+    "SortedSquares",
     "TupleSameProduct",
     "СountServers",
 ]
