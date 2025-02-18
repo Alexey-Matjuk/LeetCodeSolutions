@@ -31,6 +31,7 @@ let solutions = [
     "MinOperations",
     "MissingNumber",
     "MoveZeroes",
+    "NumTilePossibilities",
     "ProductOfNumbers",
     "PunishmentNumber",
     "QueryResults",
