@@ -38,6 +38,7 @@ let solutions = [
     "RemoveOccurrences",
     "RowAndMaximumOnes",
     "Search",
+    "SmallestNumber",
     "TupleSameProduct",
     "СountServers",
 ]
