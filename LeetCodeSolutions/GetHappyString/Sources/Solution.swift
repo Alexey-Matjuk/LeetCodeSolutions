@@ -5,6 +5,10 @@
 class Solution {
     private static let happyLetters: [Character] = ["a", "b", "c"]
     func getHappyString(_ n: Int, _ k: Int) -> String {
+        let totalHappyStringsCount = 3 * (1 << n - 1) // 3 * 2 ^ (n - 1)
+        if k > totalHappyStringsCount {
+            return ""
+        }
         var k = k
         var currentHappyStringLetters = [Character]()
         func updateHappyStringLetters() {
