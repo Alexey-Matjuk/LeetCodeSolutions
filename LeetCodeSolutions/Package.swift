@@ -17,6 +17,7 @@ let solutions = [
     "FindMaxFish",
     "FirstBadVersion",
     "FirstCompleteIndex",
+    "GetHappyString",
     "GridGame",
     "HighestPeak",
     "IsArraySpecial",
