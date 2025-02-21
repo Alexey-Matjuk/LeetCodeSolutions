@@ -14,6 +14,7 @@ let solutions = [
     "ConstructDistancedSequence",
     "CountBadPairs",
     "EventualSafeNodes",
+    "Find",
     "FindDifferentBinaryString",
     "FindMaxFish",
     "FirstBadVersion",
