@@ -40,6 +40,7 @@ let solutions = [
     "ProductOfNumbers",
     "PunishmentNumber",
     "QueryResults",
+    "RecoverFromPreorder",
     "RemoveOccurrences",
     "RowAndMaximumOnes",
     "Search",
