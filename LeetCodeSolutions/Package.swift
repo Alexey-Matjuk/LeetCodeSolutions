@@ -12,6 +12,7 @@ let solutions = [
     "CheckIfPrerequisite",
     "ClearDigits",
     "ConstructDistancedSequence",
+    "ConstructFromPrePost",
     "CountBadPairs",
     "EventualSafeNodes",
     "Find",
