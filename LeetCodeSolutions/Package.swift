@@ -33,6 +33,7 @@ let solutions = [
     "MaximumInvitations",
     "MaximumSum",
     "Merge",
+    "MergeArrays",
     "MinCost",
     "MinOperations",
     "MissingNumber",
