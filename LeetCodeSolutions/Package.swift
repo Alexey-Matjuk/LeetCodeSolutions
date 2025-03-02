@@ -28,6 +28,7 @@ let solutions = [
     "LexicographicallySmallestArray",
     "LongestCommonSubsequence",
     "LongestMonotonicSubarray",
+    "MaxAbsoluteSum",
     "MaxProduct",
     "MaxScore",
     "MaximumInvitations",
