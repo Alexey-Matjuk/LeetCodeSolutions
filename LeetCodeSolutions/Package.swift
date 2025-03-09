@@ -42,6 +42,7 @@ let solutions = [
     "MoveZeroes",
     "NumOfSubarrays",
     "NumTilePossibilities",
+    "NumberOfAlternatingGroups",
     "ProductOfNumbers",
     "PunishmentNumber",
     "QueryResults",
