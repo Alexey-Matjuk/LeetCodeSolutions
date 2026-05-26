@@ -44,6 +44,7 @@ let solutions = [
     "NumOfSubarrays",
     "NumTilePossibilities",
     "NumberOfAlternatingGroups",
+    "NumberOfSpecialChars",
     "ProductOfNumbers",
     "PunishmentNumber",
     "QueryResults",
