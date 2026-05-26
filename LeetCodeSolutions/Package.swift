@@ -8,6 +8,7 @@ import PackageDescription
 let solutions = [
     "ApplyOperations",
     "AreAlmostEqual",
+    "CanReach",
     "Change",
     "Check",
     "CheckIfPrerequisite",
