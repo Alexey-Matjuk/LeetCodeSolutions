@@ -45,6 +45,7 @@ let solutions = [
     "NumTilePossibilities",
     "NumberOfAlternatingGroups",
     "NumberOfSpecialChars",
+    "NumberOfSpecialChars2",
     "ProductOfNumbers",
     "PunishmentNumber",
     "QueryResults",
