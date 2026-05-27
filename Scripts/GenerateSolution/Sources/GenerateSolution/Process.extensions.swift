@@ -21,10 +21,10 @@ extension Process {
         }
     }
 
-    static func openInXcode(_ file: Path) async throws {
+    static func openInXcode(_ path: Path) async throws {
         let process = Process()
         process.launchPath = "/usr/bin/xed"
-        process.arguments = ["\(file.absolute().string)"]
+        process.arguments = ["\(path.absolute().string)"]
         try await process.run()
     }
 

@@ -26,7 +26,6 @@ struct GenerateSolutionByName: AsyncParsableCommand {
         print("Generating \(solutionName) subpackage...")
 
         try generateSolution()
-        try updatePackageFile()
 
         try await openPackage()
         try await openSolution()
@@ -38,8 +37,12 @@ struct GenerateSolutionByName: AsyncParsableCommand {
 private extension GenerateSolutionByName {
     static let projectPath = Path("LeetCodeSolutions")
 
+    var solutionPath: Path {
+        GenerateSolutionByName.projectPath + solutionName
+    }
+
     func generateSolution() throws {
-        let outputPath = GenerateSolutionByName.projectPath + solutionName
+        let outputPath = solutionPath
 
         if outputPath.exists {
             guard override else {
@@ -59,33 +62,18 @@ private extension GenerateSolutionByName {
             .writeFiles(path: outputPath)
     }
 
-    func updatePackageFile() throws {
-        let solutions = GenerateSolutionByName.projectPath
-            .iterateChildren(options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
-            .compactMap { $0.isDirectory ? $0.lastComponent : nil }
-            .sorted()
-
-        let packageFilePath = GenerateSolutionByName.projectPath + "Package.swift"
-        var packageFileContent = try String(contentsOf: packageFilePath.url, encoding: .utf8)
-        packageFileContent.replace(
-            /let solutions[^\]]*\]/,
-            with: "let solutions = [\n\(solutions.map { "    \"\($0)\",\n" }.joined())]"
-        )
-        try packageFileContent.write(to: packageFilePath.url, atomically: true, encoding: .utf8)
-    }
-
     func openPackage() async throws {
         try await Process.resolveSPMDependencies(
-            GenerateSolutionByName.projectPath
+            solutionPath
         )
         try await Process.openInXcode(
-            GenerateSolutionByName.projectPath + "Package.swift"
+            solutionPath
         )
     }
 
     func openSolution() async throws {
         try await Process.openInXcode(
-            GenerateSolutionByName.projectPath + "\(solutionName)/Sources/Solution.swift"
+            solutionPath + "Sources/Solution.swift"
         )
     }
 }

@@ -17,7 +17,19 @@ jobs:
 
       - name: Run tests
         run: |
-          swift test --enable-code-coverage --package-path LeetCodeSolutions
+          set -e
+
+          for package_dir in LeetCodeSolutions/*; do
+            if [[ ! -f "$package_dir/Package.swift" || ! -d "$package_dir/Sources" || ! -d "$package_dir/Tests" ]]; then
+              continue
+            fi
+
+            package_name="$(basename "$package_dir")"
+            swift test \
+              --enable-code-coverage \
+              --package-path "$package_dir" \
+              --scratch-path "LeetCodeSolutions/.build/$package_name"
+          done
 
       - name: Swift Coverage Conversion
         uses: sersoft-gmbh/swift-coverage-action@v4.0

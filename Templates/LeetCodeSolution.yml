@@ -5,6 +5,28 @@ variables:
     description: The name of the solution
     required: true
 files:
+  - path: Package.swift
+    contents: |
+      // swift-tools-version: 6.0
+      // The swift-tools-version declares the minimum version of Swift required to build this package.
+
+      import PackageDescription
+
+      let package = Package(
+          name: "{{ solution_name }}",
+          platforms: [.macOS(.v15)],
+          targets: [
+              .target(
+                  name: "{{ solution_name }}",
+                  path: "Sources"
+              ),
+              .testTarget(
+                  name: "{{ solution_name }}Tests",
+                  dependencies: ["{{ solution_name }}"],
+                  path: "Tests"
+              ),
+          ]
+      )
   - path: Sources/Solution.swift
     contents: |
       /// - Time complexity: O(<#Complexity#>)
