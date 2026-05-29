@@ -41,8 +41,9 @@ files:
       import Testing
       @testable import {{ solution_name }}
       
-      @Test func test1() async throws {
-      }
-      
-      @Test func test2() async throws {
+      @Test(arguments: [
+          (<#Input#>, <#Output#>),
+      ])
+      func {{ solution_name|lowerFirstLetter }}(_ input: <#Input Type#>, _ output: <#Output Type#>) {
+          #expect(Solution().{{ solution_name|lowerFirstLetter }}(input) == output)
       }
