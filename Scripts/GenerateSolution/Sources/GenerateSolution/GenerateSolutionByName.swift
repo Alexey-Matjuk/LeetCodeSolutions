@@ -28,7 +28,6 @@ struct GenerateSolutionByName: AsyncParsableCommand {
         try generateSolution()
 
         try await openPackage()
-        try await openSolution()
 
         print("Generation complete!".green)
     }
@@ -68,12 +67,6 @@ private extension GenerateSolutionByName {
         )
         try await Process.openInXcode(
             solutionPath
-        )
-    }
-
-    func openSolution() async throws {
-        try await Process.openInXcode(
-            solutionPath + "Sources/Solution.swift"
         )
     }
 }
