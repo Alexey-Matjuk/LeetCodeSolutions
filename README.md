@@ -4,7 +4,6 @@
 ![codecov](https://codecov.io/github/Alexey-Matjuk/LeetCodeSolutions/graph/badge.svg?token=XR1T55UU0G)
 ![Platforms](https://img.shields.io/badge/Platforms-macOS-blue)
 ![Swift Version](https://img.shields.io/badge/Swift-6.0-blue?logo=swift&logoColor=white)
-![Static Badge](https://img.shields.io/badge/SPM-compatible-blue)
 
 ![LeetCode](https://img.shields.io/badge/LeetCode-000000?style=for-the-badge&logo=LeetCode&logoColor=#d16c06)
 ![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)
