@@ -25,4 +25,32 @@ extension String {
             ).string
         ) ?? self
     }
+
+    var integerFromRomanNumeral: Int? {
+        let values: [Character: Int] = [
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
+        ]
+
+        var total = 0
+        var previousValue = 0
+
+        for character in uppercased().reversed() {
+            guard let value = values[character] else { return nil }
+
+            if value < previousValue {
+                total -= value
+            } else {
+                total += value
+                previousValue = value
+            }
+        }
+
+        return total
+    }
 }

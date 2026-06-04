@@ -11,6 +11,14 @@ extension Problem {
 
 extension Question {
     var solutionName: String? {
+        var words = titleSlug.split(separator: "-").map(\.capitalized)
+        if let romanNumeralValue = words.last?.integerFromRomanNumeral {
+            words[words.endIndex - 1] = "\(romanNumeralValue)"
+        }
+        return words.joined()
+    }
+
+    var testName: String? {
         codeSnippet?.firstMatch(of: /func\s+(\w+)\s*\(/).flatMap { String($0.1) }
     }
 
@@ -18,7 +26,7 @@ extension Question {
         guard let parameters = codeSnippet?.firstMatch(of: /\((.+)\)/)?.output.1,
               let returnType = codeSnippet?.firstMatch(of: /\)\s*->\s*([^{]+)\{/)
                 .map({ String($0.1).trimmingCharacters(in: .whitespacesAndNewlines) }),
-              let solutionName
+              let testName
         else { return nil }
 
         let parameterDeclarations = String(parameters)
@@ -53,8 +61,8 @@ extension Question {
         @Test(arguments: [
         \(arguments)
         ])
-        func \(solutionName)(\(functionParameters)) {
-            #expect(Solution().\(solutionName)(\(callArguments)) == output)
+        func \(testName)(\(functionParameters)) {
+            #expect(Solution().\(testName)(\(callArguments)) == output)
         }
 
         """
